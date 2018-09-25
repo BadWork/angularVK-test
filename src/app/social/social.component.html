@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Social Page</a>
+        </nav>
+    </div>
+    <div class="col-3">
+        <ul class="list-group">
+            <li *ngFor="let city of cities" class="list-group-item "><button class="btn btn-primary btn-block"
+                    [class.active]="city == selectedCity" (click)="changeCity(city)">{{city}}</button></li>
+        </ul>
+    </div>
+    <div class="col-9">
+        <div class="row container">
+            <div class="col-4">
+                <div class="card bg-light">
+                    <div class="container">
+                            <div class="row">
+                                    <div *ngFor="let user of users" class="col-4">
+                                            <img class="card-img-top rounded-circle" src="https://picsum.photos/100/100" alt="Card image cap">
+                                            <p class="text-center" style="font-size: 0.9rem">{{user.firstName}}</p>
+                                    </div>
+                            </div>
+                    </div>
+
+                </div>
+                <div>
+                        <select class="form-control" [value]="usersPerPage" (change)="changePageSize($event.target.value)">
+                            <option value="3">3 per Page</option>
+                            <option value="4">4 per Page</option>
+                            <option value="6">6 per Page</option>
+                            <option value="8">8 per Page</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button *counter="let page of pageCount" (click)="changePage(page)" class="btn btn-outline-secondary" [class.active]="page == selectedPage">
+                            {{page}}
+                        </button>
+                    </div>
+            </div>
+            <div class="col-8">
+
+            </div>
+            
+        </div>
+    </div>
+</div>
